@@ -142,7 +142,7 @@ const Checkout = () => {
     const { amount, id: order_id, currency } = result.data;
 
     const options = {
-      key: process.env.RAZORPAY_KEY, // Enter the Key ID generated from the Dashboard
+      key: process.env.RAZORPAYKEY, // Enter the Key ID generated from the Dashboard
       amount: amount.toString(),
       currency: currency,
       name: "Shopping Spot",
