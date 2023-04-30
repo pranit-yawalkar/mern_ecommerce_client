@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import InputWidget from "../widgets/InputWidget";
 import { BsBagHeart, BsSearch } from "react-icons/bs";
 import { AiOutlineShoppingCart, AiOutlineUnorderedList } from "react-icons/ai";
 import { BiGitCompare } from "react-icons/bi";
@@ -35,6 +34,7 @@ const Header = () => {
 
   useEffect(() => {
     dispatch(getCart());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

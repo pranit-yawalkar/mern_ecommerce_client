@@ -12,6 +12,7 @@ const Wishlist = () => {
   const wishlistState = useSelector((state) => state.auth.wishlist);
   useEffect(() => {
     getWishlist();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getWishlist = () => {

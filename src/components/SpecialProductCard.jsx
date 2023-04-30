@@ -1,6 +1,5 @@
 import React from "react";
 import { BsCartPlus, BsEye, BsHeart } from "react-icons/bs";
-import { VscGitCompare } from "react-icons/vsc";
 import ReactStars from "react-rating-stars-component";
 import ButtonWidget from "../widgets/ButtonWidget";
 import { addToWishlist } from "../features/product/productSlice";

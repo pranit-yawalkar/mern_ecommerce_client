@@ -1,6 +1,5 @@
 import React from "react";
 import { BsCartPlus, BsEye, BsHeart } from "react-icons/bs";
-import { VscGitCompare } from "react-icons/vsc";
 import ReactStars from "react-rating-stars-component";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";

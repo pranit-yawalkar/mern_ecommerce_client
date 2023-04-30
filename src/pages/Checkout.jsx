@@ -40,10 +40,12 @@ const Checkout = () => {
   useEffect(() => {
     dispatch(getCart());
     getOrderItems();
+    setShippingCharges(50);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    getSubtotal();
+    getSubtotal(); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cartState]);
 
   const formik = useFormik({

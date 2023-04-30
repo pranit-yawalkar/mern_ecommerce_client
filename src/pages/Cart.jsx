@@ -9,11 +9,7 @@ import { BiCart, BiLeftArrow } from "react-icons/bi";
 import { IoBagCheckOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  deleteCartProduct,
-  getCart,
-  updateCartQuantity,
-} from "../features/user/userSlice";
+import { deleteCartProduct, getCart } from "../features/user/userSlice";
 import { FaTrash } from "react-icons/fa";
 
 const Cart = () => {
@@ -24,10 +20,12 @@ const Cart = () => {
 
   useEffect(() => {
     dispatch(getCart());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     getSubtotal();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userCartState]);
 
   const deleteProductFromCart = (id) => {
