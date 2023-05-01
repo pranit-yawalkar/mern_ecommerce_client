@@ -25,12 +25,12 @@ const Cart = () => {
 
   useEffect(() => {
     getSubtotal();
+    dispatch(getCart());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userCartState]);
 
   const deleteProductFromCart = (id) => {
     dispatch(deleteCartProduct(id));
-    dispatch(getCart());
   };
 
   const getSubtotal = () => {

@@ -22,6 +22,7 @@ const Login = () => {
     if (authState?.user !== null && !authState?.isError) {
       navigate("/");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authState]);
 
   const formik = useFormik({

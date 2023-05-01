@@ -28,7 +28,6 @@ const ProductDetail = () => {
   const [alreadyAdded, setAlreadyAdded] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [popularProducts, setPopularProducts] = useState([]);
-  console.log(popularProducts);
 
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -37,9 +36,11 @@ const ProductDetail = () => {
   const cartState = useSelector((state) => state?.auth?.cartProducts);
 
   useEffect(() => {
+    setQuantity(1);
     dispatch(getAProduct(id));
     dispatch(getCart());
     dispatch(getProducts());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -76,6 +77,7 @@ const ProductDetail = () => {
         setAlreadyAdded(true);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const productAddToCart = () => {
@@ -105,7 +107,7 @@ const ProductDetail = () => {
       productState?.images[0]?.url ||
       "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/718ETwvLVOL._SL1500_.jpg",
   };
-  const [orderedProduct, setOrderedProduct] = useState(true);
+  // const [orderedProduct, setOrderedProduct] = useState(true);
 
   return (
     <>
@@ -336,14 +338,9 @@ const ProductDetail = () => {
                     <span>Based on 2 reviews</span>
                   </div>
                 </div>
-                {orderedProduct && (
-                  <Link
-                    className="text-color-2 border-b-2 border-color-2"
-                    to="/"
-                  >
-                    Write a review
-                  </Link>
-                )}
+                <Link className="text-color-2 border-b-2 border-color-2" to="/">
+                  Write a review
+                </Link>
               </div>
               <div className="py-8 border-b-2 border-b-gray-200">
                 <h4 className="text-xl">Write a review</h4>

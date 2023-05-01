@@ -22,12 +22,30 @@ const SpecialProductCard = ({
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const cartState = useSelector((state) => state?.auth?.cartProducts);
+  const wishlistState = useSelector((state) => state.auth.wishlist);
 
   const addToWish = (prodId) => {
+    if (!localStorage.getItem("user")) {
+      toast.error("Please login to add!");
+      navigate("/login");
+      return;
+    }
+    for (let i = 0; i < wishlistState?.length; i++) {
+      if (id === wishlistState[i]?._id) {
+        toast.info("Product is already present in the wishlist");
+        return;
+      }
+    }
+
     dispatch(addToWishlist(prodId));
   };
 
   const addProductToCart = () => {
+    if (!localStorage.getItem("user")) {
+      toast.error("Please login to add!");
+      navigate("/login");
+      return;
+    }
     for (let i = 0; i < cartState?.length; i++) {
       if (id === cartState[i]?.productId?._id) {
         toast.info("Product is already present in the cart");

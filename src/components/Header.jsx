@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { BsBagHeart, BsSearch } from "react-icons/bs";
+import { BsBagHeart, BsInfoCircleFill, BsSearch } from "react-icons/bs";
 import { AiOutlineShoppingCart, AiOutlineUnorderedList } from "react-icons/ai";
-import { BiGitCompare } from "react-icons/bi";
 import { FaAngleDown } from "react-icons/fa";
 import {
   MdAccountBox,
@@ -16,7 +15,7 @@ import {
 } from "react-icons/md";
 import logo from "../assets/images/logo/logo_transparent.png";
 import { useDispatch, useSelector } from "react-redux";
-import { getCart } from "../features/user/userSlice";
+import { getCart, getUserWishlist } from "../features/user/userSlice";
 import Autosuggest from "react-autosuggest";
 import { getAProduct } from "../features/product/productSlice";
 
@@ -25,21 +24,25 @@ const Header = () => {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const [cartCount, setCartCount] = useState(0);
+  const [wishlistCount, setWishlistCount] = useState(0);
   const [searchProducts, setSearchProducts] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const userCartState = useSelector((state) => state?.auth?.cartProducts);
   const authState = useSelector((state) => state?.auth);
   const productState = useSelector((state) => state?.product?.products);
+  const wishlistState = useSelector((state) => state.auth.wishlist);
 
   useEffect(() => {
     dispatch(getCart());
+    dispatch(getUserWishlist());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     setCartCount(userCartState?.length);
-  }, [userCartState]);
+    setWishlistCount(wishlistState?.length);
+  }, [userCartState, wishlistState]);
 
   useEffect(() => {
     const data = [];
@@ -148,17 +151,6 @@ const Header = () => {
             </Link>
           </div>
           <div className="flex items-center justify-end gap-5 md:gap-0 md:justify-around md:w-[40%]">
-            {/* <Link className="py-4 hover:text-color-2 gap-1 flex flex-col gap-2 items-center transition-all">
-              <BiGitCompare size={15} />
-              <p className="m-0">
-                Compare <br /> Products
-              </p>
-            </Link> */}
-            {/* <Link className="hidden py-4 md:hover:text-color-2 gap-1  md:flex flex-col justify-center items-center text-center transition-all">
-              <MdCategory size={22} />
-              <p className="m-0 text-sm">Categories</p>
-            </Link> */}
-
             <div className="relative group hidden md:block">
               <button className="hidden py-4 md:hover:text-color-2 gap-1  md:flex flex-col justify-center items-center text-center transition-all">
                 <MdCategory size={22} />
@@ -191,15 +183,18 @@ const Header = () => {
             </Link>
             <Link
               to="/wishlist"
-              className="py-4 md:hover:text-color-2 gap-1  flex flex-col justify-center items-center text-center transition-all"
+              className="relative md:hover:text-color-2 gap-1  flex flex-col justify-center items-center text-center transition-all"
             >
               <BsBagHeart size={22} />
+              {wishlistCount > 0 && (
+                <div className="absolute -top-3 right-1">
+                  <span className="bg-color-1 text-white p-1 rounded-full text-[10px]">
+                    {wishlistCount}
+                  </span>
+                </div>
+              )}
               <p className="m-0 text-sm hidden md:block">Wishlist</p>
             </Link>
-            {/* <Link className="py-4 hover:text-color-2 gap-1  flex flex-col justify-center items-center text-center transition-all">
-              <AiOutlineUser size={22} />
-              <p className="m-0 text-sm hidden md:block">Account</p>
-            </Link> */}
             <Link
               to="/cart"
               className="relative md:hover:text-color-2 gap-1  flex flex-col justify-center items-center text-center transition-all"
@@ -207,7 +202,7 @@ const Header = () => {
               <AiOutlineShoppingCart size={22} />
               {cartCount > 0 && (
                 <div className="absolute -top-3 -right-2">
-                  <span className="bg-color-1 text-white p-1 rounded-full text-xs">
+                  <span className="bg-color-1 text-white p-1 rounded-full text-[10px]">
                     {cartCount}
                   </span>
                 </div>
@@ -253,18 +248,15 @@ const Header = () => {
         >
           <div className="py-8 md:py-0 md:block">
             <ul className="flex flex-col items-center gap-8 md:flex-row md:gap-10 md:px-8 lg:px-32">
-              <li className="py-2 border-b-2 border-transparent md:hover:border-b-3 md:hover:border-color-2 ">
+              <li className="py-2 border-b-2 border-transparent md:hover:border-b-3 md:hover:border-color-2">
                 <Link to="/" className="flex items-center gap-2">
                   <MdHome /> Home
                 </Link>
               </li>
               <li className="py-2 border-b-2 border-transparent md:hover:border-b-3 md:hover:border-color-2 ">
-                <Link
-                  to="/compare-products"
-                  className="flex items-center gap-2"
-                >
-                  <BiGitCompare />
-                  Compare Products
+                <Link to="/about" className="flex items-center gap-2">
+                  <BsInfoCircleFill />
+                  About Us
                 </Link>
               </li>
               <li className="py-2 border-b-2 border-transparent md:hover:border-b-3 md:hover:border-color-2 ">

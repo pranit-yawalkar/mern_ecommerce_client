@@ -1,5 +1,6 @@
 import axios from "axios";
 import { base_url, config } from "../../utils/axiosConfig";
+import { toast } from "react-toastify";
 
 const register = async (userData) => {
   const response = await axios.post(`${base_url}auth/register`, userData);
@@ -52,6 +53,12 @@ const getWishlist = async () => {
 
 const addProductToCart = async (cartData) => {
   const response = await axios.post(`${base_url}user/cart`, cartData, config);
+  if (response.status === 401) {
+    toast.error("Please login to add!");
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    return;
+  }
   if (response.data) {
     return response.data;
   }

@@ -31,7 +31,6 @@ export const addToWishlist = createAsyncThunk(
   "product/wishlist",
   async (prodId, thunkAPI) => {
     try {
-      console.log(prodId);
       return await productService.addProductToWishlist(prodId);
     } catch (error) {
       console.log(error);
@@ -89,13 +88,20 @@ export const productSlice = createSlice({
         state.isError = false;
         state.isSuccess = true;
         state.wishlist = action.payload;
-        state.message = "Product added to wishlist!";
+        if (state.isSuccess) {
+          toast.success("Product added to wishlist!");
+        }
       })
       .addCase(addToWishlist.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.isSuccess = false;
         state.message = action.payload;
+        if (state.isError) {
+          toast.error("Please login to add!");
+          localStorage.removeItem("user");
+          localStorage.removeItem("token");
+        }
       })
       .addCase(getAProduct.pending, (state) => {
         state.isLoading = true;

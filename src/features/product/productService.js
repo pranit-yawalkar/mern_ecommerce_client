@@ -1,5 +1,6 @@
 import axios from "axios";
 import { base_url, config } from "../../utils/axiosConfig";
+import { toast } from "react-toastify";
 
 const getProducts = async (data) => {
   const response = await axios.get(
@@ -24,13 +25,17 @@ const getProduct = async (id) => {
 };
 
 const addProductToWishlist = async (productId) => {
-  console.log(productId);
   const response = await axios.put(
     `${base_url}product/wishlist`,
     { productId },
     config
   );
-  console.log(response);
+  if (response.status === 401) {
+    toast.error("Please login to add!");
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    return;
+  }
   if (response.data) {
     return response.data;
   }

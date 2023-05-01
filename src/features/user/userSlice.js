@@ -241,6 +241,11 @@ export const authSlice = createSlice({
         state.isError = true;
         state.isSuccess = false;
         state.message = action.error;
+        if (state.isError) {
+          toast.error("Please login to add!");
+          localStorage.removeItem("user");
+          localStorage.removeItem("token");
+        }
       })
       .addCase(getCart.pending, (state) => {
         state.isLoading = true;
