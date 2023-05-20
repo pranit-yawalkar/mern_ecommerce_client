@@ -110,3 +110,7 @@ body {
   z-index: 1000;
   overflow: hidden;
 }
+
+.active {
+  @apply text-color-1;
+}

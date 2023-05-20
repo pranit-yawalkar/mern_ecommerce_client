@@ -152,7 +152,7 @@ const Header = () => {
           </div>
           <div className="flex items-center justify-end gap-5 md:gap-0 md:justify-around md:w-[40%]">
             <div className="relative group hidden md:block">
-              <button className="hidden py-4 md:hover:text-color-2 gap-1  md:flex flex-col justify-center items-center text-center transition-all">
+              <button className="hidden py-4 md:hover:text-color-2 gap-1  md:flex flex-col justify-center items-center text-center transition-all duration-300">
                 <MdCategory size={22} />
                 <div className="flex items-center">
                   <span className="m-0 text-sm">Categories</span>
@@ -176,14 +176,14 @@ const Header = () => {
             </div>
             <Link
               to="/orders"
-              className="py-4 md:hover:text-color-2 gap-1  flex flex-col justify-center items-center text-center transition-all"
+              className="py-4 md:hover:text-color-2 gap-1  flex flex-col justify-center items-center text-center transition-all duration-300"
             >
               <AiOutlineUnorderedList size={22} />
               <p className="m-0 text-sm hidden md:block">My Orders</p>
             </Link>
             <Link
               to="/wishlist"
-              className="relative md:hover:text-color-2 gap-1  flex flex-col justify-center items-center text-center transition-all"
+              className="relative md:hover:text-color-2 gap-1  flex flex-col justify-center items-center text-center transition-all duration-300"
             >
               <BsBagHeart size={22} />
               {wishlistCount > 0 && (
@@ -197,7 +197,7 @@ const Header = () => {
             </Link>
             <Link
               to="/cart"
-              className="relative md:hover:text-color-2 gap-1  flex flex-col justify-center items-center text-center transition-all"
+              className="relative md:hover:text-color-2 gap-1  flex flex-col justify-center items-center text-center transition-all duration-300"
             >
               <AiOutlineShoppingCart size={22} />
               {cartCount > 0 && (
@@ -212,18 +212,18 @@ const Header = () => {
             {authState?.user === null ? (
               <Link
                 to="/login"
-                className="my-2 md:py-3 md:px-5 rounded-full md:bg-color-1 md:hover:bg-indigo-800 md:text-white gap-1  flex flex-col md:flex-row justify-center items-center text-center transition-all"
+                className="my-2 md:py-3 md:px-5 rounded-full md:bg-color-1 md:hover:bg-indigo-800 md:text-white gap-1  flex flex-col md:flex-row justify-center items-center text-center transition-all duration-300"
               >
                 <MdAccountBox size={22} />
                 <p className="m-0 text-sm hidden lg:block">Login/Register</p>
               </Link>
             ) : (
               <div className="relative group hidden md:block">
-                <button className="my-2 md:py-3 md:px-5 rounded-full md:bg-color-1 md:hover:bg-indigo-800 md:text-white gap-1  flex flex-col md:flex-row justify-center items-center text-center transition-all">
+                <button className="my-2 md:py-3 md:px-5 rounded-full md:bg-color-1 md:hover:bg-indigo-800 md:text-white gap-1  flex flex-col md:flex-row justify-center items-center text-center transition-all duration-300">
                   <MdAccountCircle size={22} />
                   <p className="m-0 text-sm hidden lg:block">My Account</p>
                 </button>
-                <div className="absolute z-[200] hidden bg-grey-200 group-hover:block">
+                <div className="absolute z-[200] hidden bg-grey-200 group-hover:block group-hover:transition-all group-hover:duration-300">
                   <div className="px-2 py-3 bg-white shadow-lg w-48">
                     <div className="my-2 hover:text-color-1">
                       <NavLink to="/profile" className="link">
@@ -248,34 +248,38 @@ const Header = () => {
         >
           <div className="py-8 md:py-0 md:block">
             <ul className="flex flex-col items-center gap-8 md:flex-row md:gap-10 md:px-8 lg:px-32">
-              <li className="py-2 border-b-2 border-transparent md:hover:border-b-3 md:hover:border-color-2">
-                <Link to="/" className="flex items-center gap-2">
+              <li className="py-2  md:hover:text-color-1 transition-all duration-300">
+                <NavLink
+                  activeClassName="active"
+                  to="/"
+                  className="flex items-center gap-2"
+                >
                   <MdHome /> Home
-                </Link>
+                </NavLink>
               </li>
-              <li className="py-2 border-b-2 border-transparent md:hover:border-b-3 md:hover:border-color-2 ">
-                <Link to="/about" className="flex items-center gap-2">
+              <li className="py-2  md:hover:text-color-1 transition-all duration-300">
+                <NavLink to="/about" className="flex items-center gap-2">
                   <BsInfoCircleFill />
                   About Us
-                </Link>
+                </NavLink>
               </li>
-              <li className="py-2 border-b-2 border-transparent md:hover:border-b-3 md:hover:border-color-2 ">
-                <Link to="/store" className="flex items-center gap-2">
+              <li className="py-2  md:hover:text-color-1 transition-all duration-300">
+                <NavLink to="/store" className="flex items-center gap-2">
                   <MdShop />
                   Our Store
-                </Link>
+                </NavLink>
               </li>
-              <li className="py-2 border-b-2 border-transparent md:hover:border-b-3 md:hover:border-color-2 ">
-                <Link to="/blog" className="flex items-center gap-2">
+              <li className="py-2  md:hover:text-color-1 transition-all duration-300">
+                <NavLink to="/blog" className="flex items-center gap-2">
                   <MdArticle />
                   Blogs
-                </Link>
+                </NavLink>
               </li>
-              <li className="py-2 border-b-2 border-transparent md:hover:border-b-3 md:hover:border-color-2 ">
-                <Link to="/contact" className="flex items-center gap-2">
+              <li className="py-2  md:hover:text-color-1 transition-all duration-300">
+                <NavLink to="/contact" className="flex items-center gap-2">
                   <MdContactPage />
                   Contact
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>
