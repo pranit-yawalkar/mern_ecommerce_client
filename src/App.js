@@ -36,6 +36,7 @@ function App() {
         return config;
       },
       (err) => {
+        setLoading(false);
         return Promise.reject(err);
       }
     );
@@ -46,6 +47,7 @@ function App() {
         return config;
       },
       (err) => {
+        setLoading(false);
         return Promise.reject(err);
       }
     );

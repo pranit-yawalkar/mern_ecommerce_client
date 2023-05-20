@@ -12,7 +12,7 @@ const Loader = ({ show }) => {
           aria-label="Loading Spinner"
           data-testid="loader"
         />
-        <h3>Loading...</h3>
+        <h3 className="text-lg mt-3">Loading...</h3>
       </div>
     )
   );
