@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
 import Blog from "./pages/Blog";
@@ -23,11 +23,38 @@ import { PrivateRoutes } from "./routes/privateRoutes";
 import { OpenRoutes } from "./routes/openRoutes";
 import Orders from "./pages/Orders";
 import Profile from "./pages/Profile";
+import Loader from "./components/Loader";
+import axios from "axios";
 
 function App() {
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    axios.interceptors.request.use(
+      (config) => {
+        setLoading(true);
+        return config;
+      },
+      (err) => {
+        return Promise.reject(err);
+      }
+    );
+
+    axios.interceptors.response.use(
+      (config) => {
+        setLoading(false);
+        return config;
+      },
+      (err) => {
+        return Promise.reject(err);
+      }
+    );
+  }, [loading]);
+
   return (
     <>
       <BrowserRouter>
+        <Loader show={loading} />
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
