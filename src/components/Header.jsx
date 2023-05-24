@@ -244,7 +244,7 @@ const Header = () => {
         <nav
           className={`absolute transition-all top-18 ${
             showMenu ? "left-0" : "-left-[700px]"
-          }  w-[60%] h-[100%] justify-center md:flex md:sticky md:top-0 md:h-10 md:w-full md:justify-start bg-zinc-100`}
+          }  w-[60%] h-[100%] justify-center md:flex md:sticky md:top-0 md:h-10 md:w-full md:justify-start bg-zinc-100 z-20`}
         >
           <div className="py-8 md:py-0 md:block">
             <ul className="flex flex-col items-center gap-8 md:flex-row md:gap-10 md:px-8 lg:px-32">

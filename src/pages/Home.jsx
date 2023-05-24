@@ -182,7 +182,7 @@ const Home = () => {
           <h2 className="text-center text-xl md:text-3xl font-bold">
             Featured Collection
           </h2>
-          <div className="flex flex-col gap-5 my-8 md:flex-row">
+          <div className="flex flex-col gap-5 my-8 overflow-auto md:flex-row">
             {productState &&
               productState?.map((product) => {
                 if (product.tag.includes("featured")) {
@@ -212,7 +212,7 @@ const Home = () => {
           <h2 className="text-center text-xl md:text-3xl font-bold">
             Special Products
           </h2>
-          <div className="flex flex-col gap-3 justify-between my-8 md:flex-row">
+          <div className="flex flex-col gap-3 justify-between my-8 overflow-auto md:flex-row">
             {productState &&
               productState?.map((product) => {
                 if (product.tag.includes("special")) {
