@@ -8,7 +8,6 @@ export const createQuery = createAsyncThunk(
     try {
       return await contactService.postQuery(contactData);
     } catch (error) {
-      console.log(error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }

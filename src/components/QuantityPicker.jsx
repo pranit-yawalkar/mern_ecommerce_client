@@ -14,8 +14,6 @@ const QuantityPicker = ({ id, qty }) => {
   const increment = () => {
     updateProductFromCart(id, quantity + 1);
     setQuantity(quantity + 1);
-    console.log(id);
-    console.log(quantity);
   };
 
   const decrement = () => {

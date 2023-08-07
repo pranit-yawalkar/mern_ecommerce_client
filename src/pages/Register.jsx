@@ -30,7 +30,6 @@ const Register = () => {
     },
     validationSchema: registerSchema,
     onSubmit: (values) => {
-      console.log(values);
       dispatch(registerUser(values));
     },
   });

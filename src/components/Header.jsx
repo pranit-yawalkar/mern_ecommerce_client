@@ -90,7 +90,6 @@ const Header = () => {
 
   const handleSuggestionsFetchRequested = async ({ value }) => {
     if (!value) {
-      console.log(value);
       setSuggestions([]);
       return;
     }
@@ -250,7 +249,7 @@ const Header = () => {
             <ul className="flex flex-col items-center gap-8 md:flex-row md:gap-10 md:px-8 lg:px-32">
               <li className="py-2  md:hover:text-color-1 transition-all duration-300">
                 <NavLink
-                  activeClassName="active"
+                  activeclassname="active"
                   to="/"
                   className="flex items-center gap-2"
                 >

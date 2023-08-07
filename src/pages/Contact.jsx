@@ -27,7 +27,6 @@ const Contact = () => {
     },
     validationSchema: contactSchema,
     onSubmit: (values) => {
-      console.log(values);
       dispatch(createQuery(values));
     },
   });

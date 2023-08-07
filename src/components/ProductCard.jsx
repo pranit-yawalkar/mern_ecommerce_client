@@ -48,7 +48,6 @@ const ProductCard = ({
       return;
     }
     for (let i = 0; i < cartState?.length; i++) {
-      console.log("for l");
       if (id === cartState[i]?.productId?._id) {
         toast.info("Product is already present in the cart");
         return;

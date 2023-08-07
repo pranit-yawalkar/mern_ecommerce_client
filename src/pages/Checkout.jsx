@@ -88,7 +88,6 @@ const Checkout = () => {
   };
 
   const createOrder = (shippingInfo, paymentInfo) => {
-    console.log("calling createOrder");
     dispatch(
       createAnOrder({
         totalPrice: total,
@@ -122,7 +121,6 @@ const Checkout = () => {
   };
 
   const checkoutHandler = async (shippingInfo) => {
-    console.log("Checkout handler");
     const res = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"
     );
@@ -156,8 +154,6 @@ const Checkout = () => {
           razorpayPaymentId: response.razorpay_payment_id,
           razorpayOrderId: response.razorpay_order_id,
         };
-
-        console.log("handler");
 
         const result = await axios.post(
           `${base_url}user/order/verify-payment`,

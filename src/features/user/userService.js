@@ -66,7 +66,6 @@ const addProductToCart = async (cartData) => {
 
 const getUserCart = async () => {
   const response = await axios.get(`${base_url}user/cart`, config);
-  console.log(response);
   if (response.data) {
     return response.data;
   }
@@ -74,7 +73,6 @@ const getUserCart = async () => {
 
 const emptyCart = async (id) => {
   const response = await axios.delete(`${base_url}user/cart/empty`, config);
-  console.log(response);
   if (response.data) {
     return response.data;
   }
@@ -82,7 +80,6 @@ const emptyCart = async (id) => {
 
 const removeProductFromCart = async (id) => {
   const response = await axios.delete(`${base_url}user/cart/${id}`, config);
-  console.log(response);
   if (response.data) {
     return response.data;
   }
@@ -94,7 +91,6 @@ const updateQuantityFromCart = async (cartItem) => {
     { quantity: cartItem?.quantity },
     config
   );
-  console.log(response);
   if (response.data) {
     return response.data;
   }
@@ -106,7 +102,6 @@ const createOrder = async (orderDetail) => {
     orderDetail,
     config
   );
-  console.log(response);
   if (response.data) {
     return response.data;
   }

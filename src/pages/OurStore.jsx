@@ -50,8 +50,6 @@ const OurStore = () => {
     setTags([...new Set(tagArr)]);
   }, [products]);
 
-  console.log(sort);
-
   const getAllProducts = () => {
     dispatch(getProducts({ sort, tag, brand, category, minPrice, maxPrice }));
   };

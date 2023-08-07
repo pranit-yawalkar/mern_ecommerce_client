@@ -8,7 +8,6 @@ export const registerUser = createAsyncThunk(
     try {
       return await userService.register(userData);
     } catch (error) {
-      console.log(error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }
@@ -20,7 +19,6 @@ export const loginUser = createAsyncThunk(
     try {
       return await userService.login(userData);
     } catch (error) {
-      console.log(error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }
@@ -32,7 +30,6 @@ export const forgotPassword = createAsyncThunk(
     try {
       return await userService.forgotPasswordToken(data);
     } catch (error) {
-      console.log(error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }
@@ -42,10 +39,8 @@ export const resetPassword = createAsyncThunk(
   "auth/reset-password",
   async (data, thunkAPI) => {
     try {
-      console.log(data);
       return await userService.resetUserPassword(data);
     } catch (error) {
-      console.log(error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }
@@ -174,7 +169,6 @@ export const authSlice = createSlice({
         state.isSuccess = true;
         state.createdUser = action.payload;
         if (state.isSuccess) {
-          console.log("Success");
           toast.info("User registered successfully!");
         }
       })

@@ -20,7 +20,6 @@ const Home = () => {
   const dispatch = useDispatch();
   const blogs = useSelector((state) => state?.blog?.blogs);
   const productState = useSelector((state) => state?.product?.products);
-  console.log(productState);
 
   useEffect(() => {
     getBlogs();
@@ -194,7 +193,7 @@ const Home = () => {
                           product?.images[0]?.url ||
                           "images/products/laptop.jpg"
                         }
-                        brand={product?.brand}
+                        brand={product?.brand?.title}
                         name={product?.title}
                         price={product?.price}
                         color={product?.color}
@@ -223,7 +222,7 @@ const Home = () => {
                       img={
                         product?.images[0]?.url || "images/products/laptop.jpg"
                       }
-                      brand={product?.brand}
+                      brand={product?.brand?.title}
                       name={product?.title}
                       price={product?.price}
                       sold={product?.sold ?? 0}

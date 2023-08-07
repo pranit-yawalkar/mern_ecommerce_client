@@ -9,7 +9,6 @@ export const getProducts = createAsyncThunk(
     try {
       return await productService.getProducts(data);
     } catch (error) {
-      console.log(error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }
@@ -21,7 +20,6 @@ export const getAProduct = createAsyncThunk(
     try {
       return await productService.getProduct(id);
     } catch (error) {
-      console.log(error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }
@@ -33,7 +31,6 @@ export const addToWishlist = createAsyncThunk(
     try {
       return await productService.addProductToWishlist(prodId);
     } catch (error) {
-      console.log(error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }
@@ -45,7 +42,6 @@ export const addRating = createAsyncThunk(
     try {
       return await productService.rateProduct(data);
     } catch (error) {
-      console.log(error);
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }

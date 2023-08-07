@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 const Color = ({ colorData, setColorData }) => {
   const [selected, setSelected] = useState(null);
-  console.log(colorData);
   return (
     <ul className="flex gap-2 items-center">
       {colorData &&

@@ -32,7 +32,6 @@ const Login = () => {
     },
     validationSchema: loginSchema,
     onSubmit: (values) => {
-      console.log("insdie");
       dispatch(loginUser(values));
     },
   });
